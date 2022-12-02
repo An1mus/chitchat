@@ -1,0 +1,18 @@
+@import '../styles/vars';
+
+.container {
+	background: $background;
+	margin-top: 2rem;
+	width: 50rem;
+	height: 25rem;
+	@include radius;
+}
+
+.message {
+	.author {
+
+	}
+	.text {
+
+	}
+}

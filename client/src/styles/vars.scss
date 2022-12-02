@@ -1,0 +1,9 @@
+$grey: #232425;
+$background: #42485b;
+$white: white;
+$font-family: system-ui, -apple-system, sans-serif;
+$message: rgb(191, 192, 193);
+
+@mixin radius {
+	border-radius: 0.25rem;
+}
