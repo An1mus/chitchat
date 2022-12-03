@@ -1,0 +1,12 @@
+@import "../styles/vars";
+
+.inputs {
+	padding: 1rem;
+	background: $background-dark;
+	display: flex;
+
+	input {
+		outline: none;
+		width: 100%;
+	}
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Chat.module.scss';
+import Inputs from "./Inputs";
 
 const Chat: React.FC = () => {
     return <main className={styles.container}>
@@ -22,6 +23,8 @@ const Chat: React.FC = () => {
                 </div>
             </div>
         </section>
+
+        <Inputs/>
     </main>;
 }
 

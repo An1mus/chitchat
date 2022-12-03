@@ -1,11 +1,9 @@
 @import '../styles/vars';
 
 .container {
-	background: $background;
 	margin-top: 2rem;
 	width: 50rem;
 	height: 25rem;
-	@include radius;
 }
 
 .chatBox {
@@ -13,6 +11,8 @@
 	flex-direction: column;
 	align-items: flex-start;
 	padding: 1rem;
+	background: $background;
+	@include radius;
 }
 
 .message {
