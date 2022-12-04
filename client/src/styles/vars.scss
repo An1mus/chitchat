@@ -1,12 +1,15 @@
 $grey: #232425;
 $background-dark: #242838;
 $background: #42485b;
-$background-light: #363d59;
-$background-lighter: #525a79;
+$dark-blue: #2b4f7e;
+$blue: #418cb4;
+$active: #47a8dc;
 $white: white;
 $font-family: system-ui, -apple-system, sans-serif;
 $message: rgb(191, 192, 193);
 
+$border-radius: 0.25rem;
+
 @mixin radius {
-	border-radius: 0.25rem;
+	border-radius: $border-radius;
 }

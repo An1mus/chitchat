@@ -6,7 +6,19 @@
 	display: flex;
 
 	input {
+		border: none;
+		border-top-left-radius: $border-radius;
+		border-bottom-left-radius: $border-radius;
 		outline: none;
 		width: 100%;
+	}
+
+	button {
+		border: none;
+		background: $active;
+		border-top-right-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+		color: white;
+		padding: 0.5rem 1rem;
 	}
 }
