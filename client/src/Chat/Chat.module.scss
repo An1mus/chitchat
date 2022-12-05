@@ -7,13 +7,16 @@
 }
 
 .chatBox {
-	display: flex;
-	flex-direction: column;
 	align-items: flex-start;
-	padding: 1rem;
+	display: flex;
 	background: $background;
 	border-top-left-radius: $border-radius;
 	border-top-right-radius: $border-radius;
+	flex-direction: column;
+	height: 70vh;
+	min-height: 30rem;
+	overflow: scroll;
+	padding: 1rem;
 }
 
 .message {

@@ -2,6 +2,7 @@
 
 .App {
     background: $controls;
+	box-sizing: border-box;
 	color: $white;
 	font-family: $font-family;
 	height: 100vh;
