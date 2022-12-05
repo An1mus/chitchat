@@ -2,7 +2,8 @@
 
 .inputs {
 	padding: 1rem;
-	background: $background-dark;
+	background: $background;
+	border-top: 0.0625rem solid rgba($background, 0.3);
 	display: flex;
 
 	input {
@@ -10,6 +11,7 @@
 		border-top-left-radius: $border-radius;
 		border-bottom-left-radius: $border-radius;
 		outline: none;
+		padding: 0.5rem;
 		width: 100%;
 	}
 
@@ -19,6 +21,9 @@
 		border-top-right-radius: $border-radius;
 		border-bottom-right-radius: $border-radius;
 		color: white;
+		cursor: pointer;
+		font-weight: bold;
 		padding: 0.5rem 1rem;
+		text-transform: uppercase;
 	}
 }
