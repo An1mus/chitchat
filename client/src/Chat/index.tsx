@@ -1,31 +1,37 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Chat.module.scss';
 import Inputs from "./Inputs";
+import {IMessage, useChatStore} from "../mobx/chatStore";
+import {observer} from "mobx-react-lite";
+import {socket} from "../api";
 
-const Chat: React.FC = () => {
+const Chat: React.FC = observer(() => {
+    const chatStore = useChatStore();
+
+    useEffect(() => {
+        socket.on('message', (message: IMessage) => {
+            console.log(message);
+            chatStore.updateChat(message)
+        });
+    }, []);
+
     return <main className={styles.container}>
         <section className={styles.chatBox}>
-            <div className={styles.message}>
-                <div className={styles.author}>
-                    author
-                </div>
-                <div className={styles.text}>
-                    text
-                </div>
-            </div>
-
-            <div className={`${styles.message} ${styles.byAuthor}`}>
-                <div className={styles.author}>
-                    author
-                </div>
-                <div className={styles.text}>
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                </div>
-            </div>
+            {
+                chatStore.chat.map(message => {
+                    return <div key={message.message + message.author} className={styles.message}>
+                        <div className={styles.author}>
+                            {message.author}
+                        </div>
+                        <div className={styles.text}>
+                            {message.message}
+                        </div>
+                    </div>
+                })
+            }
         </section>
-
         <Inputs/>
     </main>;
-}
+});
 
 export default Chat;

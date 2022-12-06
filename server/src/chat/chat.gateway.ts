@@ -1,14 +1,24 @@
-import {ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway} from "@nestjs/websockets";
-import {Socket} from "net";
+import {MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer} from "@nestjs/websockets";
+import { Server } from 'socket.io';
 
-@WebSocketGateway(81, { namespace: 'chat' })
+interface IMessage {
+    message: string,
+    author: string,
+    date: string,
+}
+
+@WebSocketGateway({
+    cors: {
+        origin: '*',
+    },
+})
 export class ChatGateway {
+    @WebSocketServer()
+    server: Server;
 
     @SubscribeMessage('message')
-    handleEvent(
-        @MessageBody() data: string,
-        @ConnectedSocket() client: Socket,
-    ): string {
+    inputMessage(@MessageBody() data: IMessage): IMessage {
+        this.server.emit('message', data)
         return data;
     }
 }

@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Inputs.module.scss';
+import {sendMessage} from "../api";
 
 const Inputs: React.FC = () => {
+    const [message, setMessage] = useState('');
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
+        sendMessage(message)
     }
 
     return <form className={styles.inputs}>
-        <input type="text"/>
+        <input
+            type="text"
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+        />
         <button onClick={handleSubmit}>send</button>
     </form>;
 }
