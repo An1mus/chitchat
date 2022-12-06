@@ -30,8 +30,8 @@ lerna-debug.log*
 .idea
 
 node_modules/
-/server/node_modules
-/client/node_modules
+server/node_modules/
+client/node_modules
 
 # IDE - VSCode
 .vscode/*
