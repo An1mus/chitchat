@@ -10,7 +10,6 @@ const Chat: React.FC = observer(() => {
 
     useEffect(() => {
         socket.on('message', (message: IMessage) => {
-            console.log(message);
             chatStore.updateChat(message)
         });
     }, []);
@@ -19,7 +18,7 @@ const Chat: React.FC = observer(() => {
         <section className={styles.chatBox}>
             {
                 chatStore.chat.map(message => {
-                    return <div key={message.message + message.author} className={styles.message}>
+                    return <div key={message.uuid} className={styles.message}>
                         <div className={styles.author}>
                             {message.author}
                         </div>

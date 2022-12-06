@@ -7,6 +7,7 @@ const Inputs: React.FC = () => {
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         sendMessage(message)
+        setMessage('');
     }
 
     return <form className={styles.inputs}>

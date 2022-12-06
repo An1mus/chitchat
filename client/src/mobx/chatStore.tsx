@@ -5,6 +5,7 @@ export interface IMessage {
     date: string;
     message: string;
     author: string;
+    uuid: string,
 }
 
 export class ChatStore {
