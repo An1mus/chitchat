@@ -1,10 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from './Chat.module.scss';
 import Inputs from "./Inputs";
 import {IMessage, useChatStore} from "../mobx/chatStore";
 import {observer} from "mobx-react-lite";
 import {socket} from "../api";
-import {autorun} from "mobx";
 
 const ScrollOptions: any = {block: "end", inline: "nearest"};
 
@@ -23,9 +22,7 @@ const Chat: React.FC = observer(() => {
     }, []);
 
     useEffect(() => {
-        autorun(() => {
-            scrollElement.current?.scrollIntoView(ScrollOptions);
-        })
+        scrollElement.current?.scrollIntoView(ScrollOptions);
     })
 
     return <main className={styles.container}>
