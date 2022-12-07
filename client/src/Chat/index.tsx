@@ -12,6 +12,10 @@ const Chat: React.FC = observer(() => {
         socket.on('message', (message: IMessage) => {
             chatStore.updateChat(message)
         });
+
+        return () => {
+            socket.removeListener('message');
+        };
     }, []);
 
     return <main className={styles.container}>
