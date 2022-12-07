@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeObservable, observable} from "mobx";
 import React, {createContext} from "react";
 
 export interface IMessage {
@@ -12,7 +12,10 @@ export class ChatStore {
     chat: IMessage[] = [];
 
     constructor() {
-        makeAutoObservable(this);
+        makeObservable(this, {
+            chat: observable,
+            updateChat: action,
+        })
     }
 
     updateChat(message: IMessage) {

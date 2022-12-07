@@ -1,22 +1,32 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './Chat.module.scss';
 import Inputs from "./Inputs";
 import {IMessage, useChatStore} from "../mobx/chatStore";
 import {observer} from "mobx-react-lite";
 import {socket} from "../api";
+import {autorun} from "mobx";
+
+const ScrollOptions: any = {block: "end", inline: "nearest"};
 
 const Chat: React.FC = observer(() => {
     const chatStore = useChatStore();
+    const scrollElement = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         socket.on('message', (message: IMessage) => {
-            chatStore.updateChat(message)
+            chatStore.updateChat(message);
         });
 
         return () => {
             socket.removeListener('message');
         };
     }, []);
+
+    useEffect(() => {
+        autorun(() => {
+            scrollElement.current?.scrollIntoView(ScrollOptions);
+        })
+    })
 
     return <main className={styles.container}>
         <section
@@ -34,6 +44,7 @@ const Chat: React.FC = observer(() => {
                     </div>
                 })
             }
+            <div ref={scrollElement}/>
         </section>
         <Inputs />
     </main>;
