@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from './Chat.module.scss';
 import Inputs from "./Inputs";
 import {IMessage, useChatStore} from "../mobx/chatStore";
@@ -19,7 +19,9 @@ const Chat: React.FC = observer(() => {
     }, []);
 
     return <main className={styles.container}>
-        <section className={styles.chatBox}>
+        <section
+            className={styles.chatBox}
+        >
             {
                 chatStore.chat.map(message => {
                     return <div key={message.uuid} className={styles.message}>
@@ -33,7 +35,7 @@ const Chat: React.FC = observer(() => {
                 })
             }
         </section>
-        <Inputs/>
+        <Inputs />
     </main>;
 });
 

@@ -1,34 +1,37 @@
 @import '../styles/vars';
 
 .container {
+	height: 80vh;
 	margin-top: 2rem;
-	width: 80%;
 	min-width: 20rem;
 	max-width: 50rem;
-	height: 25rem;
+	min-height: 25rem;
+	width: 100%;
 }
 
 .chatBox {
-	align-items: flex-start;
-	justify-content: flex-end;
 	display: flex;
 	background: $background;
 	border-top-left-radius: $border-radius;
 	border-top-right-radius: $border-radius;
 	flex-direction: column;
-	height: 70vh;
-	min-height: 30rem;
-	overflow: scroll;
+	height: 60vh;
+	overflow-y: auto;
 	padding: 1rem;
 }
 
 .message {
 	background: $controls;
 	padding: 1rem;
-	margin: 0.5rem 0;
-	min-width: 25%;
+	margin: 0.35rem 0;
+	min-width: 27%;
+	overflow-wrap: anywhere;
 	max-width: 55%;
 	@include radius;
+
+	&:first-child {
+		margin-top: auto;
+	}
 
 	&.byAuthor {
 		background: $blue;
