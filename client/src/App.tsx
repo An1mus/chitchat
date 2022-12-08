@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Chat from "./components/Chat";
-import Controls from "./components/Controls";
+import {Chat, Controls} from "./components";
 
 function App() {
     return (
