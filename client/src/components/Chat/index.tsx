@@ -1,9 +1,9 @@
 import React, {useEffect, useRef} from 'react';
 import styles from './Chat.module.scss';
 import Inputs from "./Inputs";
-import {IMessage, useChatStore} from "../mobx/chatStore";
+import {IMessage, useChatStore} from "../../mobx/chatStore";
 import {observer} from "mobx-react-lite";
-import {socket} from "../api";
+import {socket} from "../../api";
 
 const ScrollOptions: any = {block: "end", inline: "nearest"};
 

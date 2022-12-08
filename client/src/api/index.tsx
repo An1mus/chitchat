@@ -5,6 +5,6 @@ const API_URL = `http://localhost:3001/`;
 
 export const socket = io(API_URL);
 
-export const sendMessage = (message: string) =>  {
-    socket.emit('message', { message, author: 'me', uuid: uuid(), date: new Date() });
+export const sendMessage = (message: string, nickname: string) =>  {
+    socket.emit('message', { message, author: nickname, uuid: uuid(), date: new Date() });
 }

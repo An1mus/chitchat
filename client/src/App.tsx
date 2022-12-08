@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.scss';
-import Chat from "./Chat";
+import Chat from "./components/Chat";
+import Controls from "./components/Controls";
 
 function App() {
     return (
         <div className="App">
             <header>
-                <h1>ChitChat</h1>
-                <h4>Send a message to creator</h4>
+                <span>
+                    <h1>ChitChat</h1>
+                    <h4>Send a message to creator</h4>
+                </span>
+                <Controls />
             </header>
 
             <Chat />

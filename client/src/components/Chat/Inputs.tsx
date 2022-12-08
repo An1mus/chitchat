@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import styles from './Inputs.module.scss';
-import {sendMessage} from "../api";
+import {sendMessage} from "../../api";
+import {useUserStore} from "../../mobx/userStore";
+import {observer} from "mobx-react-lite";
 
-const Inputs: React.FC = () => {
+const Inputs: React.FC = observer(() => {
     const [message, setMessage] = useState('');
+    const user = useUserStore();
+
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        sendMessage(message)
+        sendMessage(message, user.userName);
         setMessage('');
     }
 
@@ -18,6 +22,6 @@ const Inputs: React.FC = () => {
         />
         <button onClick={handleSubmit}>send</button>
     </form>;
-}
+});
 
 export default Inputs;
