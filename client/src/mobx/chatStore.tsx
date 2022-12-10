@@ -8,13 +8,20 @@ export interface IMessage {
     uuid: string,
 }
 
+export interface IUser {
+    id: string;
+    nickname: string;
+}
+
 export class ChatStore {
     chat: IMessage[] = [];
+    connectedUsers: IUser[] = [];
 
     constructor() {
         makeObservable(this, {
             chat: observable,
             updateChat: action,
+            connectedUsers: observable,
         })
     }
 
