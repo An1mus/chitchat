@@ -12,3 +12,10 @@ $border-radius: 0.25rem;
 @mixin radius {
 	border-radius: $border-radius;
 }
+
+@mixin inputBase {
+	background: none;
+	border: none;
+	cursor: pointer;
+	outline: none;
+}

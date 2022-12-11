@@ -3,7 +3,7 @@ import {IUser, useChatStore} from "../../mobx/chatStore";
 
 const Users = () => {
     const chatStore = useChatStore();
-    return <div className={styles.user}>
+    return <div className={styles.usersList}>
         {chatStore.connectedUsers.map((user: IUser) => <div key={user.id}>
             {user.nickname}
         </div>)}

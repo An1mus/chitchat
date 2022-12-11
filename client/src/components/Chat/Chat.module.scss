@@ -1,14 +1,17 @@
 @import '../../styles/vars';
 
 .container {
-	height: 80vh;
+	display: flex;
+	height: calc(100% - 7rem);
 	margin-top: 2rem;
 	min-width: 20rem;
-	max-width: 50rem;
-	min-height: 25rem;
-	width: 100%;
+	width: auto;
 }
 
+.chatContainer {
+	height: 100%;
+	width: 100%;
+}
 .chatBox {
 	display: flex;
 	background: $background;

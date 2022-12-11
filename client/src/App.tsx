@@ -6,10 +6,7 @@ function App() {
     return (
         <div className="App">
             <header>
-                <span>
-                    <h1>ChitChat</h1>
-                    <h4>Send a message to creator</h4>
-                </span>
+                <h1>ChitChat</h1>
                 <Controls />
             </header>
 

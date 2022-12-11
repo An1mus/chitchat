@@ -15,7 +15,12 @@ export interface IUser {
 
 export class ChatStore {
     chat: IMessage[] = [];
-    connectedUsers: IUser[] = [];
+    connectedUsers: IUser[] = [
+        {
+            id: 'aosijdoiajsd',
+            nickname: 'aosjdoajsoida',
+        }
+    ];
 
     constructor() {
         makeObservable(this, {
