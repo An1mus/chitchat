@@ -19,6 +19,7 @@ export class UserStore {
 
     set nickName(value) {
         this._nickName = value;
+        localStorage.setItem(LOCAL_STORAGE_NICK_NAME, value)
     }
 }
 

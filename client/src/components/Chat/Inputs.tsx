@@ -18,7 +18,6 @@ const Inputs: React.FC = observer(() => {
 
     useEffect(() => {
         socket.on('connectedUsers', (users) => {
-            console.log(users);
             chat.updateConnectedUsers(users);
         })
 

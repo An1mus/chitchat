@@ -1,6 +1,17 @@
+@import "src/styles/vars";
 
 .usersList {
+	background: $background;
 	display: flex;
 	flex-direction: column;
 	width: 25%;
+	border-right: 0.0625rem solid $controls;
+	@include radius;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+
+	.user {
+		padding: 1.5rem 2rem;
+		border-bottom: 0.0625rem solid $controls;
+	}
 }

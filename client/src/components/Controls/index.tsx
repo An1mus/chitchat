@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './Controls.module.scss';
 import {observer} from "mobx-react-lite";
 import {useUserStore} from "../../mobx/userStore";
-import {socket} from "../../api";
+import {connectWithNickName} from "../../api";
 
 const Controls: React.FC = observer(() => {
     const [isOpen, setOpen] = useState(false);
@@ -10,14 +10,18 @@ const Controls: React.FC = observer(() => {
     const user = useUserStore();
 
     useEffect(() => {
+        if(user.nickName) connectWithNickName(user.nickName);
+    }, [])
+
+    useEffect(() => {
         !user.nickName ?
             setOpen(false) :
             setOpen(true);
-    }, [user.nickName])
+    }, [user.nickName]);
 
     const handleSubmit = () => {
         user.nickName = name
-        socket.emit('userConnected', name);
+        connectWithNickName(name);
         setOpen(false);
     }
 

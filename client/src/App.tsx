@@ -9,8 +9,7 @@ function App() {
     return (
         <div className="App">
             <header>
-                <h1>Welcome to ChitChat</h1>
-                <h2>{user.nickName}</h2>
+                <h1>Welcome to ChitChat, {user.nickName}</h1>
                 <Controls />
             </header>
 

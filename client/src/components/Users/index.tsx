@@ -6,7 +6,9 @@ const Users = observer(() => {
     const chatStore = useChatStore();
     return <div className={styles.usersList}>
         {chatStore.connectedUsers.map((user: IUser) => <div key={user.id}>
-            {user.nickname}
+            <div className={styles.user}>
+                {user.nickname}
+            </div>
         </div>)}
     </div>
 })

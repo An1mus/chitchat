@@ -1,5 +1,11 @@
 @import "styles/vars";
 
+*,
+* *,
+* * * {
+	box-sizing: border-box;
+}
+
 .App {
     background: $controls;
 	box-sizing: border-box;

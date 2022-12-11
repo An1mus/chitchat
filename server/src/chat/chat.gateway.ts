@@ -33,11 +33,14 @@ export class ChatGateway {
         @MessageBody() nickname: string,
         @ConnectedSocket() client: Socket,
     ) {
-        this.users.push({
-            nickname,
-            id: client.id
-        })
-        this.server.emit('connectedUsers', this.users);
+        if(nickname && !this.users.find(user => user.id === client.id)) {
+            this.users.push({
+                nickname,
+                id: client.id
+            });
+
+            this.server.emit('connectedUsers', this.users);
+        }
     }
 
     handleDisconnect(socket: Socket) {

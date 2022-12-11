@@ -4,6 +4,7 @@
 	padding: 1rem;
 	background: $background;
 	border-top: 0.0625rem solid rgba($background, 0.3);
+	border-bottom-right-radius: $border-radius;
 	display: flex;
 
 	input {
