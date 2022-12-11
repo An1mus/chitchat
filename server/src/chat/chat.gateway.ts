@@ -28,7 +28,7 @@ export class ChatGateway {
         return data;
     }
 
-    @SubscribeMessage('user-joined')
+    @SubscribeMessage('userConnected')
     onUserJoined(
         @MessageBody() nickname: string,
         @ConnectedSocket() client: Socket,
@@ -37,9 +37,11 @@ export class ChatGateway {
             nickname,
             id: client.id
         })
+        this.server.emit('connectedUsers', this.users);
     }
 
     handleDisconnect(socket: Socket) {
         this.users = [...this.users.filter(user => user.id !== socket.id)];
+        this.server.emit('connectedUsers', this.users);
     }
 }
