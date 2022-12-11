@@ -4,8 +4,12 @@ import {observer} from "mobx-react-lite";
 import {useUserStore} from "../../mobx/userStore";
 import {connectWithNickName} from "../../api";
 
-const Controls: React.FC = observer(() => {
-    const [isOpen, setOpen] = useState(false);
+interface Props {
+    isOpen: boolean,
+    setOpen: (value: boolean) => void
+}
+
+const Controls: React.FC<Props> = observer(({isOpen, setOpen}) => {
     const [name, setName] = useState('');
     const user = useUserStore();
 
@@ -14,9 +18,7 @@ const Controls: React.FC = observer(() => {
     }, [])
 
     useEffect(() => {
-        !user.nickName ?
-            setOpen(false) :
-            setOpen(true);
+        !user.nickName ? setOpen(false) : setOpen(true);
     }, [user.nickName]);
 
     const handleSubmit = () => {
