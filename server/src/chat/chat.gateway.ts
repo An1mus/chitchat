@@ -1,4 +1,4 @@
-import {MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer} from "@nestjs/websockets";
+import {ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer} from "@nestjs/websockets";
 import {Server, Socket} from 'socket.io';
 
 interface IMessage {
@@ -29,11 +29,17 @@ export class ChatGateway {
     }
 
     @SubscribeMessage('user-joined')
-    onUserJoined(@MessageBody() nickname: string) {
-        this.server.emit('')
+    onUserJoined(
+        @MessageBody() nickname: string,
+        @ConnectedSocket() client: Socket,
+    ) {
+        this.users.push({
+            nickname,
+            id: client.id
+        })
     }
 
     handleDisconnect(socket: Socket) {
-        console.log(socket.id);
+        this.users = [...this.users.filter(user => user.id !== socket.id)];
     }
 }
