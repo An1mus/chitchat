@@ -10,7 +10,7 @@ const Inputs: React.FC = observer(() => {
 
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        sendMessage(message, user.userName);
+        sendMessage(message, user.nickName);
         setMessage('');
     }
 
