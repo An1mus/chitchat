@@ -10,15 +10,18 @@ interface Props {
 }
 
 const Controls: React.FC<Props> = observer(({isOpen, setOpen}) => {
-    const [name, setName] = useState('');
     const user = useUserStore();
+    const [name, setName] = useState('');
 
     useEffect(() => {
-        if(user.nickName) connectWithNickName(user.nickName);
+        if(user.nickName) {
+            connectWithNickName(user.nickName);
+            setName(user.nickName);
+        }
     }, [])
 
     useEffect(() => {
-        !user.nickName ? setOpen(false) : setOpen(true);
+        !user.nickName ? setOpen(true) : setOpen(false);
     }, [user.nickName]);
 
     const handleSubmit = () => {
@@ -27,7 +30,7 @@ const Controls: React.FC<Props> = observer(({isOpen, setOpen}) => {
         setOpen(false);
     }
 
-    return <div className={`${styles.nicknamePopup} ${isOpen && styles.closed}`}>
+    return <div className={`${styles.nicknamePopup} ${!isOpen && styles.closed}`}>
         <button
             className={styles.closeButton}
             onClick={() => setOpen(false)}
@@ -37,7 +40,7 @@ const Controls: React.FC<Props> = observer(({isOpen, setOpen}) => {
 
         <input
             type="text"
-            value={user.nickName || name}
+            value={name}
             placeholder={'nickname'}
             onChange={e => setName(e.target.value)}
         />

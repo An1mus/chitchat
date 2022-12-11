@@ -31,16 +31,20 @@ export class ChatGateway {
     @SubscribeMessage('userConnected')
     onUserJoined(
         @MessageBody() nickname: string,
-        @ConnectedSocket() client: Socket,
+        @ConnectedSocket() socket: Socket,
     ) {
-        if(nickname && !this.users.find(user => user.id === client.id)) {
-            this.users.push({
-                nickname,
-                id: client.id
-            });
+        const newUser = {
+            nickname,
+            id: socket.id
+        };
 
-            this.server.emit('connectedUsers', this.users);
+        if(nickname && !this.users.find(user => user.id === socket.id)) {
+            this.users.push(newUser);
+        } else {
+            this.users = [...this.users.map(user => user.id === socket.id ? newUser : user)];
         }
+
+        this.server.emit('connectedUsers', this.users);
     }
 
     handleDisconnect(socket: Socket) {
