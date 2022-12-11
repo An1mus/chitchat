@@ -5,11 +5,13 @@ import {IMessage, useChatStore} from "../../mobx/chatStore";
 import {observer} from "mobx-react-lite";
 import {socket} from "../../api";
 import Users from "../Users";
+import {useUserStore} from "../../mobx/userStore";
 
 const ScrollOptions: any = {block: "end", inline: "nearest"};
 
 const Chat: React.FC = observer(() => {
     const chatStore = useChatStore();
+    const userStore = useUserStore();
     const scrollElement = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -35,7 +37,13 @@ const Chat: React.FC = observer(() => {
             >
                 {
                     chatStore.chat.map(message => {
-                        return <div key={message.uuid} className={styles.message}>
+                        return <div
+                            key={message.uuid}
+                            className={`
+                                ${styles.message} 
+                                ${userStore.nickName === message.author ? styles.byAuthor : ''}
+                            `}
+                        >
                             <div className={styles.author}>
                                 {message.author}
                             </div>
