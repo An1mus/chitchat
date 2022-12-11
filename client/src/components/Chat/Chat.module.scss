@@ -1,6 +1,7 @@
 @import '../../styles/vars';
 
 .container {
+	box-shadow: 0 0 1rem rgba($blue, .25);
 	display: flex;
 	height: calc(100% - 9rem);
 	margin-top: 2rem;
