@@ -20,7 +20,7 @@ interface IUser {
 export class ChatGateway {
     @WebSocketServer()
     server: Server;
-    users: IUser[];
+    users: IUser[] = [];
 
     @SubscribeMessage('message')
     inputMessage(@MessageBody() data: IMessage): IMessage {

@@ -15,23 +15,23 @@ export interface IUser {
 
 export class ChatStore {
     chat: IMessage[] = [];
-    connectedUsers: IUser[] = [
-        {
-            id: 'aosijdoiajsd',
-            nickname: 'aosjdoajsoida',
-        }
-    ];
+    connectedUsers: IUser[] = [];
 
     constructor() {
         makeObservable(this, {
             chat: observable,
             updateChat: action,
             connectedUsers: observable,
+            updateConnectedUsers: action,
         })
     }
 
     updateChat(message: IMessage) {
         this.chat.push(message);
+    }
+
+    updateConnectedUsers(users: IUser[]) {
+        this.connectedUsers = users;
     }
 }
 
