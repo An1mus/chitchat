@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import uuid from "react-uuid";
 
-const API_URL = `http://localhost:3001/`;
+const API_URL = `http://localhost:8080/`;
 
 export const socket = io(API_URL);
 
