@@ -29,7 +29,9 @@ jobs:
         env:
            CI: false
       - name: Deploy to Heroku
+        env:
+          TOKEN: ${{ secrets.HEROKU_TOKEN }}
+          APP: ${{ secrets.HEROKU_APP }}
         run: |
-          heroku login
-          heroku git:remote -a websocketchitchat
-          git push heroku master
+          git remote add heroku https://heroku:$TOKEN@git.heroku.com/$APP.git
+          git push heroku HEAD:main -f
