@@ -6,6 +6,10 @@
 /server/.env
 /client/.env
 
+# env
+/server/build
+/client/dist
+
 # Logs
 logs
 *.log
