@@ -1,10 +1,10 @@
 # ChitChat
 
 The chat app with React, TypeScript and Nest, containing a single chat room.<br/>
-No data is chat data is saved.<br/> 
+No data is chat data is saved.<br/>
 User nicknames are saved in localstorage only.
 
-## Running the server 
+## Running the server
 
 ```
 cd server 
@@ -20,6 +20,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
 Server side application will run at `localhost` port `3001`
 
 ## Running the client
