@@ -37,7 +37,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## Running with docker
-
-The `docker-compose.yml` file is present in the root directory.<br/>
-Use `docker-compose up` to run both client and server within docker container.
