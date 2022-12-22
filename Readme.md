@@ -4,6 +4,12 @@ The chat app with React, TypeScript and Nest, containing a single chat room.<br/
 No data is chat data is saved.<br/>
 User nicknames are saved in localstorage only.
 
+## Running with docker compose
+
+This is a pretty basic docker setting for two containers
+The `docker-compose.yml` file is present in the root directory.<br/>
+Use `docker-compose up` to run both client and server within docker container.
+
 ## Running the server
 
 ```
