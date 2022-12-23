@@ -1,21 +1,23 @@
 name: Deploy
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
+#    branches:
+#      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies and build
-        run: |
-          cd ./client
-          npm install
-          npm run build
-          ls
+      - name: Install dependencies
+        run: npm install
+      - name: Run test
+        run: npm run test
+      - name: Install dependencies
+        run: npm run build
 #      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
 #        with:
 #          heroku_api_key: ${{secrets.HEROKU_TOKEN}}
