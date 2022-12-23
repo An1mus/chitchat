@@ -6,9 +6,13 @@
 /server/.env
 /client/.env
 
-# env
+# builds
 /server/build
 /client/dist
+
+# coverage
+/client/coverage
+
 
 # Logs
 logs

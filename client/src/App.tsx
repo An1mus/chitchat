@@ -9,7 +9,7 @@ function App() {
 
     return (
         <div className="App">
-            <header onClick={() =>  setSettingsOpen(true)}>
+            <header onClick={() => setSettingsOpen(true)}>
                 <h1>Welcome to ChitChat, {user.nickName}</h1>
                 <span>edit</span>
             </header>
