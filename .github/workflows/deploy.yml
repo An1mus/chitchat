@@ -10,15 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
-        working-directory: ./client
-        run: npm install
-      - name: Run tests
-        working-directory: ./client
-        run: npm run test
-      - name: Build app
-        working-directory: ./client
-        run: npm run build
+      - name: Install dependencies and build
+      - run: |
+          cd ./client
+          npm install
+          npm run build
+          ls
 #      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
 #        with:
 #          heroku_api_key: ${{secrets.HEROKU_TOKEN}}
