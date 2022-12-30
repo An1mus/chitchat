@@ -7,15 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Navigaet to client
+      - name: Navigate to client
         run: cd ./client
       - name: Install dependencies
         run: npm install
-      - name: build
+      - name: Build client
         run: npm run build
-      - name: Navigaet to server
+      - name: Navigate to server
         run: cd ../server
       - name: Install dependencies
         run: npm install
-      - name: build
+      - name: Build server
         run: npm run build
+      - name: Push to Heroku
+        run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}

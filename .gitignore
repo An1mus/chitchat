@@ -1,5 +1,4 @@
 # compiled output
-/server/dist
 /node_modules
 
 # env
@@ -7,8 +6,8 @@
 /client/src/.env.development
 
 # builds
-/server/build
-/client/dist
+/client/build
+/server/dist
 
 # coverage
 /client/coverage
