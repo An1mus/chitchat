@@ -8,9 +8,16 @@ export interface IMessage {
     uuid: string,
 }
 
+export enum Status {
+    Creator,
+    User,
+    Admin
+}
+
 export interface IUser {
     id: string;
     nickname: string;
+    status: Status;
 }
 
 export class ChatStore {

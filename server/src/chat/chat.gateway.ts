@@ -7,10 +7,19 @@ interface IMessage {
     date: string,
 }
 
+export enum Status {
+    Creator,
+    User,
+    Admin
+}
+
 interface IUser {
     id: string;
     nickname: string;
+    status: Status;
 }
+
+const ADMIN_NICK_OF_COURSE = 'An1mus'; // Change the logic after sign up
 
 @WebSocketGateway({
     cors: {
@@ -35,7 +44,8 @@ export class ChatGateway {
     ) {
         const newUser = {
             nickname,
-            id: socket.id
+            id: socket.id,
+            status: nickname === ADMIN_NICK_OF_COURSE ? Status.Creator : Status.User,
         };
 
         if(nickname && !this.users.find(user => user.id === socket.id)) {
