@@ -3,8 +3,8 @@
 /node_modules
 
 # env
-/server/.env
-/client/.env
+/server/src/.env.development
+/client/src/.env.development
 
 # builds
 /server/build

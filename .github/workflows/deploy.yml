@@ -5,14 +5,17 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./client
     steps:
       - uses: actions/checkout@v2
+      - name: Navigaet to client
+        run: cd ./client
       - name: Install dependencies
         run: npm install
-      - name: Run test
-        run: npm run test
+      - name: build
+        run: npm run build
+      - name: Navigaet to server
+        run: cd ../server
       - name: Install dependencies
+        run: npm install
+      - name: build
         run: npm run build
