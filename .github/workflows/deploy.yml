@@ -14,15 +14,7 @@ jobs:
           node-version: 16.x
       - name: Navigate to client
         run: cd ./client
-      - name: Install dependencies and build the app
-        run: npm install && npm run build
-      - name: Navigate to server
-        run: cd ../server
       - name: Install dependencies
         run: npm install
-      - name: Build server
+      - name: Build the aop
         run: npm run build
-      - name: Push to Heroku
-        run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
