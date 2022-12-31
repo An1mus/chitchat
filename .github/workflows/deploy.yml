@@ -3,7 +3,7 @@ name: Deploy
 on: [push]
 
 jobs:
-  build:
+  build-clinet:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -12,9 +12,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - name: Navigate to client
-        run: cd ./client
       - name: Install dependencies
-        run: npm install
-      - name: Build the aop
-        run: npm run build
+        run: |
+          cd ./client
+          npm install
+      - name: Build the app
+        run: |
+          cd ./client
+          npm run build
+        env:
+          CI: false
