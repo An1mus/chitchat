@@ -1,4 +1,10 @@
-import {ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer} from "@nestjs/websockets";
+import {
+    ConnectedSocket,
+    MessageBody,
+    SubscribeMessage,
+    WebSocketGateway,
+    WebSocketServer,
+} from '@nestjs/websockets';
 import {Server, Socket} from 'socket.io';
 
 interface IMessage {
@@ -48,7 +54,7 @@ export class ChatGateway {
             status: nickname === ADMIN_NICK_OF_COURSE ? Status.Creator : Status.User,
         };
 
-        if(nickname && !this.users.find(user => user.id === socket.id)) {
+        if (nickname && !this.users.find(user => user.id === socket.id)) {
             this.users.push(newUser);
         } else {
             this.users = [...this.users.map(user => user.id === socket.id ? newUser : user)];
